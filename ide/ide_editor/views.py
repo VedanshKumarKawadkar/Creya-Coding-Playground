@@ -80,6 +80,7 @@ def editor(request):
     #context = {"data": output_data}
     return render(request, "editor.html")
 
+
 def login(request):
     if request.method == 'POST':
         user = request.POST['email']

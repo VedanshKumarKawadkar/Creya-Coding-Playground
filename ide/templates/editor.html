@@ -40,6 +40,11 @@
             border-radius: 10px;
             color: #e7e7e7;
         }
+
+        #runbtn {
+            background: #a7e245 !important;
+        }
+    
     </style>
 </head>
 
@@ -81,8 +86,8 @@
                     </div>
 
                     <!-- RUN/COMPILE BUTTON -->
-                    <a class="col-3 offset-2" href=""><button type="submit" name="run" formaction=""
-                            class="btn btn-success">Run</button></a>
+                    <button type="submit" name="run" formaction=""
+                            class="col-3 offset-2 btn btn-success" id="runbtn">Run</button>
                 </div>
                 <br>
 
@@ -155,10 +160,11 @@
             editor.session.setMode(`ace/mode/${mode}`)
         })
 
-        document.getElementsByTagName("form")[0].addEventListener("submit", () => {
+        document.getElementsByTagName("form")[0].addEventListener("submit", (e) => {
             var code = editor.getValue()
             console.log(code);
             document.getElementById("code").value = code;
+            // e.preventDefault();
         })
 
         clrButton.addEventListener("click", () => {
