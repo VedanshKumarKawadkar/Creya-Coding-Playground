@@ -1,6 +1,7 @@
+from email import message
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, JsonResponse
-from inflection import re
+from django.contrib import messages
 from json import dumps
 from ide_editor.models import CodeData
 import requests
@@ -42,13 +43,13 @@ def runCode(request):
         id_api_response = requests.post(id_api, data=id_api_data).json()
 
         sid = id_api_response['sid']
-        print(sid)
+        #print(sid)
 
         status = "IN-QUEUE"
         while(status != "SUCCESS"):
             output_api_response = requests.post(output_api, data={'sid':sid, 'requestType':'fetchResults'}).json()
             status = output_api_response['status']
-            print(output_api_response)
+            #print(output_api_response)
 
         output = ""
         memory = ""
@@ -57,23 +58,25 @@ def runCode(request):
         print(output_api_response)
 
         if(output_api_response['compResult']=='F'):
-            ...
+            output = output_api_response['cmpError']
+            #runtime = output_api_response['runtime']
+            #memory = output_api_response['memory']
         
         elif(output_api_response['compResult']=='S'):
             if('rntError' in output_api_response):
-                print(output_api_response['rntError'])
+                #print(output_api_response['rntError'])
                 output = output_api_response['rntError']
                 runtime = output_api_response['time']
                 memory = output_api_response['memory']
 
             elif('output' in output_api_response):
-                print(output_api_response['output'])
+                #print(output_api_response['output'])
                 output = output_api_response['output']
                 runtime = output_api_response['time']
                 memory = output_api_response['memory']
 
             elif('output' not in output_api_response):
-                print("No output")
+                #print("No output")
                 output = "No Output"
                 runtime = output_api_response['time']
                 memory = output_api_response['memory']
@@ -85,23 +88,51 @@ def runCode(request):
         return JsonResponse(output_json)
         #return render(request, "editor.html", context=context)
     
+def login(request):
+    if(request.method == "POST"):
+        email = request.POST['email']
+        pwd = request.POST['password']
+        print(email, pwd)
+
+        return redirect("/editor")
+
 
 def signup(request):
     if request.method == 'POST':
-        email = request.POST['email']
-        pwd = request.POST['password']
-        user = request.POST['username']
-        print(user, pwd, email)
+        email = request.POST.get('signup_email')
+        pwd = request.POST.get('signup_password')
+        pwd = str(pwd)
+        username = request.POST.get('signup_username')
+        re_pwd = request.POST.get('signup_password_confirm')
+        print(username, pwd, email, re_pwd)
 
         client = MongoClient(host=client_string, connect=False)
         ideDB = client.ide
         user_details_coll = ideDB.user_details
 
-        user_details_coll.insert_one({
-            "username":user,
-            "email":email,
-            "password":pwd,
-            "hashed_pwd": bcrypt.hashpw(pwd, salt=bcrypt.gensalt(rounds=8))
-        })
+        check_email = user_details_coll.find_one({"email":email})
+        print(check_email)
+        check_username = user_details_coll.find_one({"username":username})
+        print(check_username)
 
-        return HttpResponse("")
+        if(check_email!=None):
+            msg = "E-mail already present."
+            message = {"message":msg}
+            return JsonResponse(message)
+        
+        elif check_email==None and check_username!=None:
+            msg = "Username already exists."
+            message = {"message":msg}
+            return JsonResponse(message)
+
+        elif check_email == None and check_username==None:
+            user_details = {
+                "username":username,
+                "email":email,
+                "password":pwd,
+                "hashed_pwd": bcrypt.hashpw(pwd.encode('utf-8'), salt=bcrypt.gensalt(rounds=8))
+            }
+            user_details_coll.insert_one(user_details)
+            msg = "New User Created."
+            message = {"message":msg}
+            return JsonResponse(message)

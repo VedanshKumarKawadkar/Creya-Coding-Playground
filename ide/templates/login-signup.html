@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <title>Login/Signup</title>
 </head>
 
@@ -318,6 +321,7 @@
                 </button>
                 <form class="form form-login" id="login_form" name="login_form" method="POST">
                     {% csrf_token %}
+                    {% include 'messages.html' %}
                     <fieldset>
                         <legend>Please, enter your email and password for login.</legend>
                         <div class="input-block">
@@ -339,23 +343,26 @@
                 </button>
                 <form class="form form-signup" id="signup_form" name="signup_form" method="POST">
                     {% csrf_token %}
+                    {% include 'messages.html' %}
+                    <p id="msg"></p>
                     <fieldset>
                         <legend>Please, enter your email, password and password confirmation for sign up.</legend>
+
                         <div class="input-block">
-                            <label for="signup-username">Username</label>
-                            <input id="signup-username" type="text" name="uname" required>
+                            <label for="signup_username">Username</label>
+                            <input id="signup_username" type="text" name="signup_uname" required>
                         </div>
                         <div class="input-block">
-                            <label for="signup-email">E-mail</label>
-                            <input id="signup-email" type="email" name="email" required>
+                            <label for="signup_email">E-mail</label>
+                            <input id="signup_email" type="email" name="signup_email" required>
                         </div>
                         <div class="input-block">
-                            <label for="signup-password">Password</label>
-                            <input id="signup-password" type="password" name="password" required>
+                            <label for="signup_password">Password</label>
+                            <input id="signup_password" type="password" name="signup_password" required>
                         </div>
                         <div class="input-block">
-                            <label for="signup-password-confirm">Confirm password</label>
-                            <input id="signup-password-confirm" type="password" name="re_pass" required>
+                            <label for="signup_password_confirm">Confirm password</label>
+                            <input id="signup_password_confirm" type="password" name="signup_password_confirm" required>
                         </div>
                     </fieldset>
                     <button type="submit" class="btn-signup" formaction="/signup">Continue</button>
@@ -374,24 +381,42 @@
             })
         })
 
-        $(document).on('submit', '#signup_form', function(e){
+        $(document).on('submit', '#signup_form', function (e) {
             e.preventDefault();
             $.ajax({
-                type:'POST',
-                url:'/signup',
-                data:{
-                    username: $("signup-username").val(),
-                    email: $("signup-email").val(),
-                    password: $("signup-password").val(),
-                    password_confirm: $("signup-password-confirm").val(),
+                type: 'POST',
+                url: '/signup',
+                data: {
+                    signup_username: $("#signup_username").val(),
+                    signup_email: $("#signup_email").val(),
+                    signup_password: $("#signup_password").val(),
+                    signup_password_confirm: $("#signup_password_confirm").val(),
                     csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()
                 },
 
-                success: function(res){
-                    alert("New user added!")
+                success: function (res) {
+                    console.log(res.message)
+                    // var error = $(res.message).find("#message_text")
+                    console.log(123134235235);
+                    $("#msg").text(res.message)
+
                 }
             })
         });
+
+        var password = document.getElementById("signup_password")
+            , confirm_password = document.getElementById("signup_password_confirm");
+
+        function validatePassword() {
+            if (password.value != confirm_password.value) {
+                confirm_password.setCustomValidity("Passwords Don't Match");
+            } else {
+                confirm_password.setCustomValidity('');
+            }
+        }
+
+        password.onchange = validatePassword;
+        confirm_password.onkeyup = validatePassword;
 
     </script>
 
