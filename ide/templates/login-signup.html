@@ -316,7 +316,7 @@
                     Login
                     <span class="underline"></span>
                 </button>
-                <form class="form form-login" method="POST">
+                <form class="form form-login" id="login_form" name="login_form" method="POST">
                     {% csrf_token %}
                     <fieldset>
                         <legend>Please, enter your email and password for login.</legend>
@@ -337,7 +337,7 @@
                     Sign Up
                     <span class="underline"></span>
                 </button>
-                <form class="form form-signup" method="POST">
+                <form class="form form-signup" id="signup_form" name="signup_form" method="POST">
                     {% csrf_token %}
                     <fieldset>
                         <legend>Please, enter your email, password and password confirmation for sign up.</legend>
@@ -358,7 +358,7 @@
                             <input id="signup-password-confirm" type="password" name="re_pass" required>
                         </div>
                     </fieldset>
-                    <button type="submit" class="btn-signup">Continue</button>
+                    <button type="submit" class="btn-signup" formaction="/signup">Continue</button>
                 </form>
             </div>
         </div>
@@ -373,6 +373,25 @@
                 this.parentElement.classList.add('is-active')
             })
         })
+
+        $(document).on('submit', '#signup_form', function(e){
+            e.preventDefault();
+            $.ajax({
+                type:'POST',
+                url:'/signup',
+                data:{
+                    username: $("signup-username").val(),
+                    email: $("signup-email").val(),
+                    password: $("signup-password").val(),
+                    password_confirm: $("signup-password-confirm").val(),
+                    csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()
+                },
+
+                success: function(res){
+                    alert("New user added!")
+                }
+            })
+        });
 
     </script>
 

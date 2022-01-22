@@ -6,9 +6,10 @@ from ide_editor.models import CodeData
 import requests
 import time
 from pymongo import MongoClient
+import bcrypt
 
 # Create your views here.
-
+client_string = "mongodb+srv://vk:1234@ide.gt9wy.mongodb.net/ide?retryWrites=true&w=majority&ssl=true&ssl_cert_reqs=CERT_NONE"
 
 def home(request):
     return render(request, "login-signup.html")
@@ -85,10 +86,22 @@ def runCode(request):
         #return render(request, "editor.html", context=context)
     
 
-def login(request):
+def signup(request):
     if request.method == 'POST':
-        user = request.POST['email']
+        email = request.POST['email']
         pwd = request.POST['password']
-        print(user, pwd)
+        user = request.POST['username']
+        print(user, pwd, email)
 
-        return redirect("/editor")
+        client = MongoClient(host=client_string, connect=False)
+        ideDB = client.ide
+        user_details_coll = ideDB.user_details
+
+        user_details_coll.insert_one({
+            "username":user,
+            "email":email,
+            "password":pwd,
+            "hashed_pwd": bcrypt.hashpw(pwd, salt=bcrypt.gensalt(rounds=8))
+        })
+
+        return HttpResponse("")
