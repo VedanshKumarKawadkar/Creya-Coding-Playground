@@ -46,7 +46,7 @@ if __name__ == "__main__":
     """
     _input = "1 5"
     res = (gfg_compile(lang, code, _input))
-
+ 
     sid = res['sid']
     print(sid)
     
