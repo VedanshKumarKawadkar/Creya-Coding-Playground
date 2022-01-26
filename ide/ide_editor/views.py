@@ -3,6 +3,8 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse, JsonResponse
 from django.contrib import messages
 from json import dumps
+
+from pydantic import Json
 from ide_editor.models import CodeData
 import requests
 import time
@@ -86,16 +88,32 @@ def runCode(request):
         print(output_data)
         context = {"data": output_data}
         return JsonResponse(output_json)
-        #return render(request, "editor.html", context=context)
+       
     
 def login(request):
     if(request.method == "POST"):
-        email = request.POST['email']
-        pwd = request.POST['password']
-        print(email, pwd)
+        email = request.POST['login_email']
+        pwd = request.POST['login_password']
+        client = MongoClient(host=client_string, connect=False)
+        ideDB = client.ide
+        user_details_coll = ideDB.user_details
 
-        return redirect("/editor")
-
+        check_email = user_details_coll.find_one({"email":email})
+        print(check_email)
+        if(check_email):
+            pwd2 = check_email['password']
+            print(pwd2)
+            if(pwd == pwd2):
+                request.session["username"] = check_email["username"]
+                request.session["email"] = check_email["email"]
+                return JsonResponse({})
+            else:
+                msg = "Password is incorrect."
+                return JsonResponse({"msg":msg})
+        else:
+            msg = "Email does not exist."
+            return JsonResponse({"msg":msg})
+        
 
 def signup(request):
     if request.method == 'POST':

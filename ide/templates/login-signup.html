@@ -322,15 +322,16 @@
                 <form class="form form-login" id="login_form" name="login_form" method="POST">
                     {% csrf_token %}
                     {% include 'messages.html' %}
+                    <p id="login_msg"></p>
                     <fieldset>
                         <legend>Please, enter your email and password for login.</legend>
                         <div class="input-block">
-                            <label for="login-email">E-mail</label>
-                            <input id="login-email" type="email" name="email" required>
+                            <label for="login_email">E-mail</label>
+                            <input id="login_email" type="email" name="login_email" required>
                         </div>
                         <div class="input-block">
-                            <label for="login-password">Password</label>
-                            <input id="login-password" type="password" name="password" required>
+                            <label for="login_password">Password</label>
+                            <input id="login_password" type="password" name="login_password" required>
                         </div>
                     </fieldset>
                     <button type="submit" class="btn-login" formaction="login">Login</button>
@@ -344,7 +345,7 @@
                 <form class="form form-signup" id="signup_form" name="signup_form" method="POST">
                     {% csrf_token %}
                     {% include 'messages.html' %}
-                    <p id="msg"></p>
+                    <p id="signup_msg"></p>
                     <fieldset>
                         <legend>Please, enter your email, password and password confirmation for sign up.</legend>
 
@@ -398,7 +399,32 @@
                     console.log(res.message)
                     // var error = $(res.message).find("#message_text")
                     console.log(123134235235);
-                    $("#msg").text(res.message)
+                    $("#signup_msg").text(res.message)
+
+                }
+            })
+        });
+
+        $(document).on('submit', '#login_form', function (e) {
+            e.preventDefault();
+            $.ajax({
+                type: 'POST',
+                url: '/login',
+                data: {
+                    login_password: $("#login_password").val(),
+                    login_email: $("#login_email").val(),
+                    csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()
+                },
+
+                success: function (res) {
+                    console.log(res.msg)
+                    //console.log(123134235235);
+                    if(!res.msg){
+                        $(document).ajaxStop(function(){
+                            window.location.href = "/editor";
+                        });
+                    }
+                    else $("#login_msg").text(res.msg);
 
                 }
             })
