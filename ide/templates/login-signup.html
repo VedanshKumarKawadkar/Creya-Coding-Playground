@@ -421,7 +421,7 @@
                     //console.log(123134235235);
                     if(!res.msg){
                         $(document).ajaxStop(function(){
-                            window.location.href = "/editor";
+                            window.location.replace("/editor");
                         });
                     }
                     else $("#login_msg").text(res.msg);

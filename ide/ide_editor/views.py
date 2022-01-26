@@ -106,7 +106,7 @@ def login(request):
             if(pwd == pwd2):
                 request.session["username"] = check_email["username"]
                 request.session["email"] = check_email["email"]
-                return JsonResponse({})
+                return render(request, "editor.html")
             else:
                 msg = "Password is incorrect."
                 return JsonResponse({"msg":msg})
@@ -154,3 +154,13 @@ def signup(request):
             msg = "New User Created."
             message = {"message":msg}
             return JsonResponse(message)
+
+
+def logout(request):
+    if request.method == "POST":
+        email = request.session["email"]
+        username = request.session["username"]
+        del email
+        del username
+
+        return redirect("/login")
