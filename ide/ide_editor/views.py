@@ -1,9 +1,7 @@
-from email import message
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, JsonResponse
 from django.contrib import messages
 from json import dumps
-
 from pydantic import Json
 from ide_editor.models import CodeData
 import requests
@@ -19,7 +17,12 @@ def home(request):
 
 
 def editor(request):
-    return render(request, "editor.html")
+    username = request.session["username"]
+    email = request.session["email"]
+    print(username, email)
+    data = [{"username":username, "email":email}]
+    context = {"data":data}
+    return render(request, "editor.html", context=context)
 
 
 def runCode(request):

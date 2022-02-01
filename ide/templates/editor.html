@@ -66,6 +66,9 @@
     <div class="nav_bar">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <button class="btn btn-outline-info"  title="User Details"><i class="fa fa-user" aria-hidden="true"></i></button>
+            {% for i in data%}
+            <h6>{{i.username}}</h6>
+            {% endfor %}
         </nav>
     </div>
     <div class="d-flex justify-content-around mt-2">
