@@ -29,6 +29,12 @@
 
         nav {
             border-radius: 0 !important;
+            position: fixed;
+        }
+
+        #dropdown {
+            top: 40px;
+            right: 1;
         }
 
         .io {
@@ -63,14 +69,21 @@
 </head>
 
 <body>
-    <div class="nav_bar">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <button class="btn btn-outline-info"  title="User Details"><i class="fa fa-user" aria-hidden="true"></i></button>
-            {% for i in data%}
-            <h6>{{i.username}}</h6>
-            {% endfor %}
-        </nav>
-    </div>
+    <nav class="navbar container-fluid justify-between navbar-dark bg-dark">
+        <a href="#" class="navbar-brand">Rabbit IDE</a>
+        <div class="d-flex">
+            <a class="nav-link text-white mr-2" href="#">Questions</a>
+            <div class="position-relative">
+                <button id="dropdown-btn" class="btn btn-outline-info shadow-none rounded-circle p-2"
+                    title="User Details"><i class="fa fa-user" aria-hidden="true"></i></button>
+                <div id="dropdown" class="position-absolute bg-light text-dark p-3 d-none rounded">
+                    {% for i in data%}
+                    <h6>{{i.username}}</h6>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </nav>
     <div class="d-flex justify-content-around mt-2">
         <div class="d-flex flex-column align-items-center">
             <form method="POST" class="bg-dark p-3" id="code_form">
@@ -166,6 +179,8 @@
         const modeSelector = document.getElementById("language")
         const runButton = document.getElementById("run")
         const clrButton = document.getElementById("clear")
+        const dropdownButton = document.getElementById("dropdown-btn");
+        const dropdown = document.getElementById("dropdown");
 
         editor.setTheme(`ace/theme/${themeSelector.value}`)
         editor.session.setMode(`ace/mode/${modeSelector.value}`)
@@ -185,6 +200,14 @@
             console.log(code);
             document.getElementById("code").value = code;
             // e.preventDefault();
+        })
+
+        clrButton.addEventListener("click", () => {
+            document.getElementById("output").value = ""
+        })
+
+        dropdownButton.addEventListener("click", () => {
+            dropdown.classList.toggle("d-none")
         })
 
         clrButton.addEventListener("click", () => {
@@ -216,7 +239,7 @@
             })
         });
 
-        
+
     </script>
 </body>
 
