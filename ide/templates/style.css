@@ -1,0 +1,70 @@
+body {
+    background: #3b4465;
+    font-family: 'Ubuntu', serif;
+    font-weight: bold;
+}
+
+#editor {
+    height: 100%;
+}
+
+nav {
+    border-radius: 0 !important;
+    position: fixed;
+}
+
+.io {
+    height: 300px;
+    width: clamp(400px, 30vw, 600px);
+    border-radius: 10px;
+    background-color: #edf7fa;
+    color: #161616;
+}
+
+.row {
+    --bs-gutter-x: 0 !important;
+}
+
+.bg-dark {
+    background-color: #161616 !important;
+    border-radius: 10px;
+    color: #e7e7e7;
+}
+
+#dropdown {
+    top: 40px;
+    right: 1;
+}
+
+#resizer {
+    background: #505d8b;
+    width: .5vw;
+    height: 100vh;
+}
+
+#resizer:hover {
+    cursor: ew-resize;
+}
+
+#question-pane {
+    width: 49.5vw;
+    overflow-y: scroll;
+}
+
+#editor-pane {
+    width: 50vw;
+    padding: 1rem .5rem 1rem .5rem;
+    overflow-y: scroll;
+}
+
+
+#runbtn {
+    background: #54a8ec !important;
+    color: aliceblue !important;
+    width: 90px;
+}
+
+#clear {
+    background: rgb(235, 199, 40) !important;
+    color: rgb(1, 9, 17) !important;
+}

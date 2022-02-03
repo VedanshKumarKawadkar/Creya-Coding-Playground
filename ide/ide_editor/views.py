@@ -22,7 +22,7 @@ def editor(request):
     print(username, email)
     data = [{"username":username, "email":email}]
     context = {"data":data}
-    return render(request, "editor.html", context=context)
+    return render(request, "question_editor.html", context=context)
 
 
 def runCode(request):
@@ -31,6 +31,9 @@ def runCode(request):
         output_api = "https://ide.geeksforgeeks.org/submissionResult.php"
 
         code = request.POST.get("code")
+        print(code)
+        if(code==""):
+            code = " "
         lang = request.POST["lang"]
         inputs = request.POST["input"]
         #theme = request.POST["theme"]
@@ -45,6 +48,7 @@ def runCode(request):
             "input": inputs,
             "save" : save
         }
+        print(id_api_data)
         id_api_response = requests.post(id_api, data=id_api_data).json()
 
         sid = id_api_response['sid']
@@ -109,7 +113,7 @@ def login(request):
             if(pwd == pwd2):
                 request.session["username"] = check_email["username"]
                 request.session["email"] = check_email["email"]
-                return render(request, "editor.html")
+                return render(request, "question_editor.html")
             else:
                 msg = "Password is incorrect."
                 return JsonResponse({"msg":msg})
