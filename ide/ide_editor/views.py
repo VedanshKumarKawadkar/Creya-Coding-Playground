@@ -12,8 +12,12 @@ import bcrypt
 # Create your views here.
 client_string = "mongodb+srv://vk:1234@ide.gt9wy.mongodb.net/ide?retryWrites=true&w=majority&ssl=true&ssl_cert_reqs=CERT_NONE"
 
-def home(request):
+def login_signup(request):
     return render(request, "login-signup.html")
+
+
+def home(request):
+    return render(request, "home.html")
 
 
 def editor(request):
@@ -22,7 +26,7 @@ def editor(request):
     print(username, email)
     data = [{"username":username, "email":email}]
     context = {"data":data}
-    return render(request, "question_editor.html", context=context)
+    return render(request, "editor.html", context=context)
 
 
 def runCode(request):
@@ -113,7 +117,7 @@ def login(request):
             if(pwd == pwd2):
                 request.session["username"] = check_email["username"]
                 request.session["email"] = check_email["email"]
-                return render(request, "question_editor.html")
+                return render(request, "home.html")
             else:
                 msg = "Password is incorrect."
                 return JsonResponse({"msg":msg})

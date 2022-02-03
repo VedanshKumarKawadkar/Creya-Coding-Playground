@@ -23,7 +23,7 @@
         body {
             margin: 0;
             font-family: Roboto, -apple-system, 'Helvetica Neue', 'Segoe UI', Arial, sans-serif;
-            background: #3b4465;
+            background: #1E1F22;
         }
 
         .forms-section {
@@ -299,14 +299,14 @@
 
         .btn-login {
             color: #fbfdff;
-            background: #a7e245;
+            background: #379eb3;
             transform: translateX(-30%);
         }
 
         .btn-signup {
-            color: #a7e245;
-            background: #fbfdff;
-            box-shadow: inset 0 0 0 2px #a7e245;
+            color: #fbfdff;
+            background: #379eb3;
+            box-shadow: inset 0 0 0 2px #379eb3;
             transform: translateX(30%);
         }
     </style>
@@ -334,7 +334,7 @@
                             <input id="login_password" type="password" name="login_password" required>
                         </div>
                     </fieldset>
-                    <button type="submit" class="btn-login" formaction="login">Login</button>
+                    <button type="submit" class="btn-login" formaction="/login">Login</button>
                 </form>
             </div>
             <div class="form-wrapper">
@@ -418,10 +418,10 @@
 
                 success: function (res) {
                     console.log(res.msg)
-                    //console.log(123134235235);
                     if(!res.msg){
+                        console.log(123134235235);
                         $(document).ajaxStop(function(){
-                            window.location.replace("/editor");
+                            window.location.href = "/home";
                         });
                     }
                     else $("#login_msg").text(res.msg);

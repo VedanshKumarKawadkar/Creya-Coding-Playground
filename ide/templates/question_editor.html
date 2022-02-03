@@ -1,3 +1,4 @@
+{% load static%}
 <html lang="en">
 
 <head>
@@ -14,13 +15,20 @@
         integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/f260a15132.js" crossorigin="anonymous"></script>
-    <title>IDE</title>
+    <title>Creya | Problems</title>
     <style type="text/css" media="screen">
         body {
-            background: #2a314d;
+            background: #1E1F22;
             font-family: 'Ubuntu', serif;
-            
             color: #F0F4E7;
+        }
+
+        .navbar-brand{
+            color:#84ACCE
+        }
+        
+        #logo{
+            height: 2.5rem;
         }
 
         #editor {
@@ -55,7 +63,7 @@
         }
 
         #resizer {
-            background: #505d8b;
+            background: #1E1F22;
             width: .5vw;
             height: 100vh;
         }
@@ -94,7 +102,7 @@
 
 <body>
     <nav class="navbar container-fluid justify-between">
-        <a href="#" class="navbar-brand">Rabbit IDE</a>
+        <div class="navbar-brand"><img src="{% static 'ide_editor/Creya_final.png' %}" id="logo"></div>
         <div class="d-flex">
             <a class="nav-link text-white mr-2" href="#">Questions</a>
             <div class="position-relative">
