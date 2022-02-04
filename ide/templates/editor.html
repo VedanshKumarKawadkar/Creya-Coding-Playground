@@ -1,4 +1,5 @@
 {% load static %}
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -16,12 +17,19 @@
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/f260a15132.js" crossorigin="anonymous"></script>
     <title>Creya | Editor</title>
-    <style type="text/css" media="screen">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         #editor {
             height: 800px;
             width: clamp(400px, 50vw, 800px);
         }
-             
+
+        
         body {
             background: #1E1F22;
             font-family: 'Ubuntu', serif;
@@ -40,10 +48,6 @@
 
         #logo {
             height: 2.5rem;
-        }
-
-        .navbar-brand{
-            color:#84ACCE
         }
 
         .btn-info {
@@ -70,13 +74,13 @@
         }
 
         #runbtn {
-            background: #54a8ec !important;
+            background: #379eb3 !important;
             color: aliceblue !important;
             width: 90px;
         }
 
         #clear {
-            background: rgb(235, 199, 40) !important;
+            background: #379eb3 !important;
             color: rgb(1, 9, 17) !important;
         }
     </style>
@@ -87,7 +91,7 @@
         <nav class="navbar container-fluid justify-between">
             <div class="navbar-brand"><img src="{% static 'ide_editor/Creya_final.png' %}" id="logo"></div>
             <div class="d-flex">
-                <button id="dropdown-btn" class="btn btn-outline-info" title="Problems">Problems</button> 
+                <a class="nav-link text-white mr-2" href="/categories">Problems</a>
 
                 <div class="position-relative">
                     <button id="dropdown-btn" class="btn btn-info shadow-none rounded-circle"
@@ -246,7 +250,11 @@
                 }
             })
         });
-
+        const dropdownButton = document.getElementById("dropdown-btn");
+        const dropdown = document.getElementById("dropdown");
+        dropdownButton.addEventListener("click", () => {
+            dropdown.classList.toggle("d-none")
+        })
         
     </script>
 </body>

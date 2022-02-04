@@ -182,10 +182,22 @@ def logout(request):
         return redirect("/login")
 
 
-def problemSet(request):
+def problem_categories(request):
     username = request.session["username"]
     email = request.session["email"]
     print(username, email)
-    data = [{"username":username, "email":email}]
-    context = {"data":data}
-    return render(request, "question_editor.html", context=context)
+    categories_data = [
+        {"cat":"Arrays", "img":""},
+        {"cat":"Matrices", "img":""}, 
+        {"cat":"Searching & Sorting", "img":""}, 
+        {"cat":"Strings", "img":""}
+    ]
+    user_data = [{"username":username, "email":email}]
+    context = {"user_data":user_data, "categories_data":categories_data}
+
+
+    return render(request, "problem_categories.html", context=context)
+
+
+def problem_set(request, category):
+    ...

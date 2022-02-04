@@ -1,4 +1,5 @@
-{% load static%}
+{% load static %}
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -21,23 +22,23 @@
             background: #1E1F22;
             font-family: 'Ubuntu', serif;
             color: #F0F4E7;
+            overflow: hidden;
         }
 
-        .navbar-brand{
-            color:#84ACCE
+        .navbar-brand {
+            color: #84ACCE
         }
-        
-        #logo{
+
+        #logo {
             height: 2.5rem;
         }
 
         #editor {
-            height: 100%;
+            height: 700px;
         }
 
         nav {
-            border-radius: 0 !important;
-            position: fixed;
+            position: fixed !important;
             background-color: #1E1F22;
         }
 
@@ -72,7 +73,7 @@
             cursor: ew-resize;
         }
 
-        .pane{
+        .pane {
             padding: 1rem .5rem;
         }
 
@@ -88,7 +89,7 @@
 
 
         #runbtn {
-            background: #54a8ec !important;
+            background: #379eb3 !important;
             color: aliceblue !important;
             width: 90px;
         }
@@ -104,10 +105,10 @@
     <nav class="navbar container-fluid justify-between">
         <div class="navbar-brand"><img src="{% static 'ide_editor/Creya_final.png' %}" id="logo"></div>
         <div class="d-flex">
-            <a class="nav-link text-white mr-2" href="#">Questions</a>
+            <a class="nav-link text-white mr-2" href="#">Problems</a>
             <div class="position-relative">
-                <button id="dropdown-btn" class="btn btn-info shadow-none rounded-circle"
-                    title="User Details"><i class="fa fa-user" aria-hidden="true"></i></button>
+                <button id="dropdown-btn" class="btn btn-info shadow-none rounded-circle" title="User Details"><i
+                        class="fa fa-user" aria-hidden="true"></i></button>
                 <div id="dropdown" class="position-absolute bg-light text-dark p-3 d-none rounded">
                     {% for i in data%}
                     <h6>{{i.username}}</h6>
@@ -117,125 +118,123 @@
         </div>
     </nav>
 
-    <main>
-        <div>
-            <div id="main" class="d-flex text-white h-100 w-100">
-                <div class="pane" id="question-pane">
+    <main style="height: 100vh; padding-top: 4.15rem;">
+        <div id="main" class="d-flex h-100 text-white w-100">
+            <div class="pane" id="question-pane">
 
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sem turpis, hendrerit eget dolor eu,
-                        tincidunt iaculis tortor. Curabitur facilisis, velit vitae finibus porttitor, nibh mauris auctor
-                        turpis, ut pretium augue turpis luctus enim. Aliquam faucibus erat id est pulvinar, ac rutrum
-                        massa eleifend. Fusce non varius ipsum. Fusce quis congue orci. Maecenas auctor ullamcorper
-                        ante, eu semper neque. Sed id ante sed enim eleifend commodo id sit amet nibh. Nunc scelerisque
-                        convallis tortor nec tincidunt. Nullam vestibulum faucibus nunc, tempor luctus nisi viverra nec.
-                        Aliquam maximus eget justo vel gravida.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sem turpis, hendrerit eget dolor eu,
+                    tincidunt iaculis tortor. Curabitur facilisis, velit vitae finibus porttitor, nibh mauris auctor
+                    turpis, ut pretium augue turpis luctus enim. Aliquam faucibus erat id est pulvinar, ac rutrum
+                    massa eleifend. Fusce non varius ipsum. Fusce quis congue orci. Maecenas auctor ullamcorper
+                    ante, eu semper neque. Sed id ante sed enim eleifend commodo id sit amet nibh. Nunc scelerisque
+                    convallis tortor nec tincidunt. Nullam vestibulum faucibus nunc, tempor luctus nisi viverra nec.
+                    Aliquam maximus eget justo vel gravida.</p>
 
-                    <p>Phasellus vehicula risus at euismod interdum. Nam sodales, orci elementum gravida ultrices, nisi
-                        lectus euismod sem, eget mollis tortor nibh eu enim. Praesent aliquam enim maximus metus
-                        condimentum, vitae facilisis lectus imperdiet. Ut et consectetur nisi. Cras vel lorem eu lorem
-                        interdum efficitur. Sed malesuada quam neque, id lacinia risus ultrices sit amet. Mauris vitae
-                        fringilla velit, et varius nisi. Suspendisse in feugiat erat. Lorem ipsum dolor sit amet,
-                        consectetur adipiscing elit. Interdum et malesuada fames ac ante ipsum primis in faucibus.
-                        Quisque euismod mi quis metus euismod, at fringilla risus fermentum. Duis commodo scelerisque
-                        dui ac pharetra. Nullam ac orci erat.</p>
+                <p>Phasellus vehicula risus at euismod interdum. Nam sodales, orci elementum gravida ultrices, nisi
+                    lectus euismod sem, eget mollis tortor nibh eu enim. Praesent aliquam enim maximus metus
+                    condimentum, vitae facilisis lectus imperdiet. Ut et consectetur nisi. Cras vel lorem eu lorem
+                    interdum efficitur. Sed malesuada quam neque, id lacinia risus ultrices sit amet. Mauris vitae
+                    fringilla velit, et varius nisi. Suspendisse in feugiat erat. Lorem ipsum dolor sit amet,
+                    consectetur adipiscing elit. Interdum et malesuada fames ac ante ipsum primis in faucibus.
+                    Quisque euismod mi quis metus euismod, at fringilla risus fermentum. Duis commodo scelerisque
+                    dui ac pharetra. Nullam ac orci erat.</p>
 
-                    <p>Donec eget venenatis metus, eu fringilla ex. Quisque scelerisque facilisis magna at mollis. Etiam
-                        at dictum est. Morbi lobortis vehicula porttitor. Sed lacinia tellus eget felis euismod sodales
-                        id et neque. Sed quis lobortis ex. Nullam pulvinar rhoncus congue. Proin magna felis,
-                        ullamcorper sed est dictum, mollis bibendum est. Cras non rhoncus lorem. Donec molestie
-                        hendrerit interdum.</p>
+                <p>Donec eget venenatis metus, eu fringilla ex. Quisque scelerisque facilisis magna at mollis. Etiam
+                    at dictum est. Morbi lobortis vehicula porttitor. Sed lacinia tellus eget felis euismod sodales
+                    id et neque. Sed quis lobortis ex. Nullam pulvinar rhoncus congue. Proin magna felis,
+                    ullamcorper sed est dictum, mollis bibendum est. Cras non rhoncus lorem. Donec molestie
+                    hendrerit interdum.</p>
 
-                    <p>Nam at cursus felis, vitae vestibulum ante. Pellentesque efficitur ipsum id odio tempus vulputate
-                        in et orci. Donec dictum imperdiet lacinia. Phasellus vel convallis felis, ac ullamcorper lacus.
-                        Cras ut dignissim dolor. Suspendisse potenti. Aenean a lacus ut ipsum hendrerit gravida ac vitae
-                        quam. Proin cursus ac erat a vehicula. Aenean tristique, tellus eget tincidunt tempus, lectus
-                        lorem condimentum libero, a mollis erat nisl et enim. Vivamus faucibus eget erat sed laoreet.
-                        Nullam vel eleifend dui. Donec nec sodales diam. Cras sed urna id ligula semper gravida sed ac
-                        augue. Donec euismod, lorem eget dapibus efficitur, enim sem lobortis leo, quis ultrices nulla
-                        lectus sit amet neque.</p>
+                <p>Nam at cursus felis, vitae vestibulum ante. Pellentesque efficitur ipsum id odio tempus vulputate
+                    in et orci. Donec dictum imperdiet lacinia. Phasellus vel convallis felis, ac ullamcorper lacus.
+                    Cras ut dignissim dolor. Suspendisse potenti. Aenean a lacus ut ipsum hendrerit gravida ac vitae
+                    quam. Proin cursus ac erat a vehicula. Aenean tristique, tellus eget tincidunt tempus, lectus
+                    lorem condimentum libero, a mollis erat nisl et enim. Vivamus faucibus eget erat sed laoreet.
+                    Nullam vel eleifend dui. Donec nec sodales diam. Cras sed urna id ligula semper gravida sed ac
+                    augue. Donec euismod, lorem eget dapibus efficitur, enim sem lobortis leo, quis ultrices nulla
+                    lectus sit amet neque.</p>
 
-                    <p>In fermentum placerat magna, eget fringilla urna dapibus ut. Nullam nec placerat lorem, varius
-                        elementum velit. Praesent condimentum neque at suscipit porta. Nullam aliquam nunc eget turpis
-                        maximus condimentum. Phasellus porta eget augue vel euismod. Aenean in ullamcorper orci, ut
-                        rutrum sem. Sed quis leo placerat, interdum risus at, egestas erat. Etiam laoreet ex quis leo
-                        ornare mattis. Curabitur interdum, nunc nec gravida ultrices, neque risus facilisis eros, vitae
-                        tristique justo ligula molestie velit. Curabitur non mollis justo, at lobortis est. Donec
-                        interdum augue non lacus efficitur, sit amet pharetra turpis maximus. Nullam vitae est mauris.
-                        Quisque eu imperdiet dui, et cursus lorem. Curabitur lacus nisi, tempor vel dolor eu, congue
-                        tempus nisl. Vivamus ac pellentesque odio. Mauris vehicula quis mauris id pellentesque. </p>
-                </div>
-                <div id="resizer"></div>
-                <div class="pane" id="editor-pane">
-                    <form method="POST" id="code_form">
-                        {% csrf_token %}
-                        <div class="bg-dark p-3">
-                            <div class="row align-items-end">
-                                <!-- LANGUAGE SELECTOR -->
-                                <div class="d-flex flex-column col-3">
-                                    <label for="lang">Language</label>
-                                    <select name="lang" id="language">
-                                        <option value="python">Python3</option>
-                                        <option value="c_cpp">C++</option>
-                                        <option value="c_cpp2">C</option>
-                                        <option value="java">Java</option>
-                                    </select>
-                                </div>
-
-                                <!-- THEME SELECTOR -->
-                                <div class="d-flex flex-column col-3 offset-1">
-                                    <label>Theme</label>
-                                    <select name="theme" id="theme">
-                                        <optgroup label="Light">
-                                            <option disabled value="github">Light themes are ugly</option>
-
-                                        </optgroup>
-                                        <optgroup label="Dark">
-                                            <option value="tomorrow_night">Tomorrow Night</option>
-                                            <option value="monokai">Monokai</option>
-                                            <option value="dracula">Dracula</option>
-                                            <option value="gruvbox">Gruvbox</option>
-                                        </optgroup>
-                                    </select>
-                                </div>
-
-                                <!-- RUN/COMPILE BUTTON -->
-                                <button type="submit" name="run" formaction="runcode"
-                                    class="col-3 offset-2 btn btn-success" id="runbtn" title="Run/Compile"> <span
-                                        id="spinner" class="spinner-border d-none"></span><span id="run"><i
-                                            class="fa fa-play"></i>
-                                        Run</span></button>
-                            </div>
-                            <br>
-
-                            <!-- ACE EDITOR -->
-                            <div id="editor" name="code_input"></div>
-                            <input type="hidden" name="code" id="code">
-                        </div>
-                        <!-- I/O SECTION -->
-                        <!--  INPUT BOX   -->
-                        <div class="my-3 bg-dark p-3">
-                            <div>Input</div>
-
-                            <textarea class="io p-2" id="input" name="input"></textarea>
-
-                        </div>
-                    </form>
-                    <!--  OUTPUT BOX   -->
+                <p>In fermentum placerat magna, eget fringilla urna dapibus ut. Nullam nec placerat lorem, varius
+                    elementum velit. Praesent condimentum neque at suscipit porta. Nullam aliquam nunc eget turpis
+                    maximus condimentum. Phasellus porta eget augue vel euismod. Aenean in ullamcorper orci, ut
+                    rutrum sem. Sed quis leo placerat, interdum risus at, egestas erat. Etiam laoreet ex quis leo
+                    ornare mattis. Curabitur interdum, nunc nec gravida ultrices, neque risus facilisis eros, vitae
+                    tristique justo ligula molestie velit. Curabitur non mollis justo, at lobortis est. Donec
+                    interdum augue non lacus efficitur, sit amet pharetra turpis maximus. Nullam vitae est mauris.
+                    Quisque eu imperdiet dui, et cursus lorem. Curabitur lacus nisi, tempor vel dolor eu, congue
+                    tempus nisl. Vivamus ac pellentesque odio. Mauris vehicula quis mauris id pellentesque. </p>
+            </div>
+            <div id="resizer"></div>
+            <div class="pane" id="editor-pane">
+                <form method="POST" id="code_form">
+                    {% csrf_token %}
                     <div class="bg-dark p-3">
-                        <div>Output</div>
-                        <textarea class="io p-2 mb-2" id="output" name="output" readonly></textarea>
-                        <div class="d-flex justify-content-between">
-                            <div>
-                                <p id="runtime">Runtime:</p>
-                                <p id="memory">Memory:</p>
+                        <div class="row align-items-end">
+                            <!-- LANGUAGE SELECTOR -->
+                            <div class="d-flex flex-column col-3">
+                                <label for="lang">Language</label>
+                                <select name="lang" id="language">
+                                    <option value="python">Python3</option>
+                                    <option value="c_cpp">C++</option>
+                                    <option value="c_cpp2">C</option>
+                                    <option value="java">Java</option>
+                                </select>
                             </div>
-                            <div>
-                                <input type="button" value="Clear" id="clear" class="btn btn-warning">
+
+                            <!-- THEME SELECTOR -->
+                            <div class="d-flex flex-column col-3 offset-1">
+                                <label>Theme</label>
+                                <select name="theme" id="theme">
+                                    <optgroup label="Light">
+                                        <option disabled value="github">Light themes are ugly</option>
+
+                                    </optgroup>
+                                    <optgroup label="Dark">
+                                        <option value="tomorrow_night">Tomorrow Night</option>
+                                        <option value="monokai">Monokai</option>
+                                        <option value="dracula">Dracula</option>
+                                        <option value="gruvbox">Gruvbox</option>
+                                    </optgroup>
+                                </select>
                             </div>
+
+                            <!-- RUN/COMPILE BUTTON -->
+                            <button type="submit" name="run" formaction="runcode" class="col-3 offset-2 btn btn-success"
+                                id="runbtn" title="Run/Compile"> <span id="spinner"
+                                    class="spinner-border d-none"></span><span id="run"><i class="fa fa-play"></i>
+                                    Run</span></button>
+                        </div>
+                        <br>
+
+                        <!-- ACE EDITOR -->
+                        <div id="editor" name="code_input"></div>
+                        <input type="hidden" name="code" id="code">
+                    </div>
+                    <!-- I/O SECTION -->
+                    <!--  INPUT BOX   -->
+                    <div class="my-3 bg-dark p-3">
+                        <div>Input</div>
+
+                        <textarea class="io p-2" id="input" name="input"></textarea>
+
+                    </div>
+                </form>
+                <!--  OUTPUT BOX   -->
+                <div class="bg-dark p-3">
+                    <div>Output</div>
+                    <textarea class="io p-2 mb-2" id="output" name="output" readonly></textarea>
+                    <div class="d-flex justify-content-between">
+                        <div>
+                            <p id="runtime">Runtime:</p>
+                            <p id="memory">Memory:</p>
+                        </div>
+                        <div>
+                            <input type="button" value="Clear" id="clear" class="btn btn-warning">
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
     </main>
 
 
@@ -345,8 +344,6 @@
                 }
             })
         });
-
-
     </script>
 </body>
 
