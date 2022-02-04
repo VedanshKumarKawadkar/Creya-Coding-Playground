@@ -17,7 +17,12 @@ def login_signup(request):
 
 
 def home(request):
-    return render(request, "home.html")
+    username = request.session["username"]
+    email = request.session["email"]
+    print(username, email)
+    data = [{"username":username, "email":email}]
+    context = {"data":data}
+    return render(request, "home.html", context=context)
 
 
 def editor(request):
@@ -175,3 +180,12 @@ def logout(request):
         del username
 
         return redirect("/login")
+
+
+def problemSet(request):
+    username = request.session["username"]
+    email = request.session["email"]
+    print(username, email)
+    data = [{"username":username, "email":email}]
+    context = {"data":data}
+    return render(request, "question_editor.html", context=context)

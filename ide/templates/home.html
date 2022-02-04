@@ -12,7 +12,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai+Looped&family=Ubuntu:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai+Looped&family=Ubuntu:wght@300&display=swap"
+        rel="stylesheet">
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.js"
         integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
@@ -43,32 +44,33 @@
             background-position: center;
             background-size: cover;
             border-radius: 20px;
-            width: 350px;
-            height: 500px;
+            width: calc(25vw - 2rem);
+            height: 60vh;
             position: relative;
             box-shadow: 0 0 50px rgba(0, 0, 0, 0.315);
         }
 
         .container img {
             align-items: center;
-            width: 300px;
-            height: 400px;
+            width: 100%;
+            height: 50vh;
         }
 
         .container .container__profile {
             background-color: #e4f2fd;
             display: flex;
             align-items: center;
+            font-size: 1.5rem;
             padding: 20px;
             position: absolute;
             right: 0;
             left: 0;
             bottom: 0;
             border-radius: 20px !important;
-            
+
         }
-        
-        .container__profile__text{
+
+        .container__profile__text {
             align-content: center;
             font-weight: bold;
             font-family: 'IBM Plex Sans Thai Looped', sans-serif;
@@ -85,13 +87,19 @@
             border-color: #379eb3;
         }
 
+        #dropdown {
+            top: 40px;
+            right: 0;
+        }
+
+
         #logo {
             height: 2.5rem;
         }
 
         a {
             color: #1E1F22;
-            
+
         }
     </style>
     <title>Creya | Home</title>
@@ -117,11 +125,13 @@
 
     <div style="gap: 4rem;height: 100vh;" class="d-flex justify-content-center align-items-center">
 
-        <a href="#">
+        <a href="/problemset">
             <div class="container m-0">
+                <img src="{% static 'ide_editor/problems.png' %}">
                 <div class="container__profile">
+                    
                     <div class="container__profile__text">
-                        <h2>Problems</h2>
+                        <p class="mb-0">Problems</p>
                     </div>
                 </div>
             </div>
@@ -129,15 +139,25 @@
 
         <a href="/editor">
             <div class="container m-0">
+                <img src="{% static 'ide_editor/editor.png' %}">
                 <div class="container__profile">
+                    
                     <div class="container__profile__text">
-                        <h2>Creya IDE</h2>
+                        <p class="mb-0">Creya IDE</p>
                     </div>
                 </div>
             </div>
         </a>
 
     </div>
+
+    <script>
+        const dropdownButton = document.getElementById("dropdown-btn");
+        const dropdown = document.getElementById("dropdown");
+        dropdownButton.addEventListener("click", () => {
+            dropdown.classList.toggle("d-none")
+        })
+    </script>
 </body>
 
 </html>
