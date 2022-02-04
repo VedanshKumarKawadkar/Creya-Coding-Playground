@@ -79,7 +79,7 @@
                 <button id="dropdown-btn" class="btn btn-outline-info" title="Problems">Problems</button> 
 
                 <div class="position-relative">
-                    <button id="dropdown-btn" class="btn btn-outline-info shadow"
+                    <button id="dropdown-btn" class="btn btn-info shadow-none rounded-circle"
                         title="User Details"><i class="fa fa-user" aria-hidden="true"></i></button>
                     <div id="dropdown" class="position-absolute bg-light text-dark p-3 d-none rounded">
                         {% for i in data%}
@@ -91,7 +91,7 @@
             </div>
         </nav>
     </div>
-    <div class="d-flex justify-content-around mt-2">
+    <div class="d-flex justify-content-around">
         <div class="d-flex flex-column align-items-center">
             <form method="POST" class="bg-dark p-3" id="code_form">
                 {% csrf_token %}

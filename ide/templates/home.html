@@ -12,6 +12,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai+Looped&family=Ubuntu:wght@300&display=swap" rel="stylesheet">
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.js"
         integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
@@ -31,11 +32,10 @@
         body {
             background-color: #1E1F22;
             font-family: Arial, Helvetica, sans-serif;
-            display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            line-height: 1.4;
+            overflow: hidden;
         }
 
         .container {
@@ -65,40 +65,33 @@
             left: 0;
             bottom: 0;
             border-radius: 20px !important;
-
+            
         }
-
-        .container .container__profile img {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            object-position: center;
-            object-fit: cover;
-            margin-right: 10px;
-        }
-
-        .container .container__profile h2 {
-            color: #334454;
-            font-size: 1.2rem;
-        }
-
-        .container .container__profile p {
-            color: #a1b2bc;
-            font-size: 0.8rem;
-        }
-
-        .container .container__profile p b {
-            font-style: italic;
+        
+        .container__profile__text{
+            align-content: center;
+            font-weight: bold;
+            font-family: 'IBM Plex Sans Thai Looped', sans-serif;
         }
 
         nav {
             border-radius: 0 !important;
-            position: fixed;
+            position: fixed !important;
             background-color: #1E1F22;
         }
 
-        #logo{
+        .btn-info {
+            background-color: #379eb3;
+            border-color: #379eb3;
+        }
+
+        #logo {
             height: 2.5rem;
+        }
+
+        a {
+            color: #1E1F22;
+            
         }
     </style>
     <title>Creya | Home</title>
@@ -108,11 +101,11 @@
 <body>
 
     <nav class="navbar container-fluid justify-between">
-        <div class="navbar-brand"><img src="{% static 'ide_editor/Creya_final.png' %}" id="logo"></div>
+        <div class="navbar-brand"><img src="{% static 'ide_editor/Creya_final.png' %}" id="logo"> </div>
         <div class="d-flex">
             <div class="position-relative">
-                <button id="dropdown-btn" class="btn btn-outline-info shadow-none rounded-circle p-2"
-                    title="User Details"><i class="fa fa-user" aria-hidden="true"></i></button>
+                <button id="dropdown-btn" class="btn btn-info shadow-none rounded-circle" title="User Details"><i
+                        class="fa fa-user" aria-hidden="true"></i></button>
                 <div id="dropdown" class="position-absolute bg-light text-dark p-3 d-none rounded">
                     {% for i in data%}
                     <h6>{{i.username}}</h6>
@@ -122,20 +115,28 @@
         </div>
     </nav>
 
+    <div style="gap: 4rem;height: 100vh;" class="d-flex justify-content-center align-items-center">
 
-    <div class="container">
-        <div class="container__profile">
-            <div class="container__profile__text">
-                <h2>Problems</h2>
+        <a href="#">
+            <div class="container m-0">
+                <div class="container__profile">
+                    <div class="container__profile__text">
+                        <h2>Problems</h2>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-    <div class="container">
-        <div class="container__profile">
-            <div class="container__profile__text">
-                <h2>Creya IDE</h2>
+        </a>
+
+        <a href="/editor">
+            <div class="container m-0">
+                <div class="container__profile">
+                    <div class="container__profile__text">
+                        <h2>Creya IDE</h2>
+                    </div>
+                </div>
             </div>
-        </div>
+        </a>
+
     </div>
 </body>
 
