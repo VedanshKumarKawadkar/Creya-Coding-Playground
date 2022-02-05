@@ -21,7 +21,7 @@ def home(request):
     email = request.session["email"]
     print(username, email)
     data = [{"username":username, "email":email}]
-    context = {"data":data}
+    context = {"user_data":data}
     return render(request, "home.html", context=context)
 
 
@@ -200,4 +200,4 @@ def problem_categories(request):
 
 
 def problem_set(request, category):
-    ...
+    return HttpResponse(f"Working {category}")

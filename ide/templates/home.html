@@ -1,3 +1,4 @@
+{% extends 'navbar.html' %}
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
@@ -23,6 +24,13 @@
         integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
         crossorigin="anonymous" />
 
+    
+    <title>Creya | Home</title>
+
+</head>
+
+{% block content %}
+<body>
     <style>
         * {
             margin: 0;
@@ -102,27 +110,7 @@
 
         }
     </style>
-    <title>Creya | Home</title>
-
-</head>
-
-<body>
-
-    <nav class="navbar container-fluid justify-between">
-        <div class="navbar-brand"><img src="{% static 'ide_editor/Creya_final.png' %}" id="logo"> </div>
-        <div class="d-flex">
-            <div class="position-relative">
-                <button id="dropdown-btn" class="btn btn-info shadow-none rounded-circle" title="User Details"><i
-                        class="fa fa-user" aria-hidden="true"></i></button>
-                <div id="dropdown" class="position-absolute bg-light text-dark p-3 d-none rounded">
-                    {% for i in data%}
-                    <h6>{{i.username}}</h6>
-                    {% endfor %}
-                </div>
-            </div>
-        </div>
-    </nav>
-
+    
     <div style="gap: 4rem;height: 100vh;" class="d-flex justify-content-center align-items-center">
 
         <a href="/categories">
@@ -148,9 +136,9 @@
                 </div>
             </div>
         </a>
-
+        
     </div>
-
+    
     <script>
         const dropdownButton = document.getElementById("dropdown-btn");
         const dropdown = document.getElementById("dropdown");
@@ -159,5 +147,6 @@
         })
     </script>
 </body>
+{% endblock  %}
 
 </html>

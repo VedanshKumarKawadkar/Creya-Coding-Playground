@@ -10,5 +10,6 @@ urlpatterns = [
     path("login", view=views.login, name="login"),
     path("runcode", view=views.runCode, name="runcode"),
     path("signup", view=views.signup, name="signup"),
-    path("categories", view=views.problem_categories, name="categories")
+    path("categories", view=views.problem_categories, name="categories"),
+    path("categories/<str:category>", view=views.problem_set, name="problemset")
 ]

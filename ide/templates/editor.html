@@ -1,3 +1,4 @@
+{% extends 'navbar.html' %}
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
@@ -13,10 +14,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap" rel="stylesheet">
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.js"
-        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/f260a15132.js" crossorigin="anonymous"></script>
     <title>Creya | Editor</title>
+    
+</head>
+
+{% block content %}
+<body>
     <style>
         * {
             margin: 0;
@@ -33,21 +39,6 @@
         body {
             background: #1E1F22;
             font-family: 'Ubuntu', serif;
-        }
-
-        nav {
-            border-radius: 0 !important;
-            background: #1E1F22;
-        }
-
-        #dropdown {
-            top: 40px;
-            right: 0;
-        }
-
-
-        #logo {
-            height: 2.5rem;
         }
 
         .btn-info {
@@ -83,11 +74,9 @@
             background: #379eb3 !important;
             color: rgb(1, 9, 17) !important;
         }
-    </style>
-</head>
 
-<body>
-    <div class="nav_bar">
+    </style>
+    {% comment %} <div class="nav_bar">
         <nav class="navbar container-fluid justify-between">
             <div class="navbar-brand"><img src="{% static 'ide_editor/Creya_final.png' %}" id="logo"></div>
             <div class="d-flex">
@@ -105,7 +94,7 @@
 
             </div>
         </nav>
-    </div>
+    </div> {% endcomment %}
     <div class="d-flex justify-content-around">
         <div class="d-flex flex-column align-items-center">
             <form method="POST" class="bg-dark p-3" id="code_form">
@@ -128,7 +117,7 @@
                         <select name="theme" id="theme">
                             <optgroup label="Light">
                                 <option disabled value="github">Light themes are ugly</option>
-
+                                
                             </optgroup>
                             <optgroup label="Dark">
                                 <option value="tomorrow_night">Tomorrow Night</option>
@@ -145,7 +134,7 @@
                             id="run"><i class="fa fa-play"></i> Run</span></button>
                 </div>
                 <br>
-
+                
                 <!-- ACE EDITOR -->
                 <div id="editor" name="code_input"></div>
                 <input type="hidden" name="code" id="code">
@@ -157,7 +146,7 @@
             <!--  INPUT BOX   -->
             <div class="mb-3 bg-dark p-3">
                 <div>Input</div>
-
+                
                 <textarea class="io p-2" id="input" name="input"></textarea>
 
             </div>
@@ -178,8 +167,8 @@
             </div>
         </div>
     </div>
-
-
+    
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.13/ace.js"
         integrity="sha512-OMjy8oWtPbx9rJmoprdaQdS2rRovgTetHjiBf7RL7LvRSouoMLks5aIcgqHb6vGEAduuPdBTDCoztxLR+nv45g=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -259,4 +248,5 @@
     </script>
 </body>
 
+{% endblock %}
 </html>

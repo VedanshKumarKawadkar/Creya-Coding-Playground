@@ -24,15 +24,22 @@
     <style>
         nav {
             border-radius: 0 !important;
-            position: fixed !important;
             background-color: #1E1F22;
         }
 
+        .btn-info {
+            background-color: #379eb3;
+            border-color: #379eb3;
+        }
 
         #logo{
             height: 2.5rem;
         }
 
+        #dropdown {
+            top: 40px;
+            right: 0;
+        }
         
         </style>
 </head>
@@ -41,7 +48,7 @@
         <div class="navbar-brand"><img src="{% static 'ide_editor/Creya_final.png' %}" id="logo"> </div>
         <div class="d-flex">
             <div class="position-relative">
-                <button id="dropdown-btn" class="btn btn-outline-info shadow-none rounded-circle p-2"
+                <button id="dropdown-btn" class="btn btn-info shadow-none rounded-circle"
                 title="User Details"><i class="fa fa-user" aria-hidden="true"></i></button>
                 <div id="dropdown" class="position-absolute bg-light text-dark p-3 d-none rounded">
                     {% for i in user_data%}
