@@ -23,9 +23,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
         integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
         crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=PT+Sans&display=swap" rel="stylesheet">
 
-
-    <title>Creya | Problems Categories</title>
+    <title>Creya | Problems</title>
 
 </head>
 
@@ -42,25 +43,41 @@
 
         body {
             background-color: #1E1F22;
-            font-family: 'Ubuntu', serif;
+            font-family: 'PT Sans', sans-serif !important;
+            
             justify-content: center;
             align-items: center;
             min-height: 100vh;
         }
 
         #heading {
-            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            font-family: 'PT Sans', sans-serif;
             padding-left: 5rem;
             align-content: center;
         }
 
+        th, td {
+            padding: 15px;
+        }
+
         th {
-            font-family: ;
+            color: #379eb3;
+            font-size: 2rem;
+            font-family: 'PT Sans', sans-serif !important;
         }
 
         td {
             color: aliceblue;
+            font-family: 'PT Sans', sans-serif !important;
         }
+
+        table{
+            font-family: 'PT Sans', sans-serif !important;
+        }
+        .container-fluid{
+            align-content: center;
+        }
+
     </style>
 
     <div class="container-fluid">
@@ -71,17 +88,17 @@
         {% endfor %}
 
         <div class="problem-set">
-            <table>
+            <table id="problem-table">
                 <tr>
-                    <th>#Q.</th>
+                    <th>#</th>
                     <th>Problem</th>
                     <th>Status</th>
                 </tr>
                 {% for i in problems %}
                 <tr>
                     <td>{{ forloop.counter }}</td>
-                    <td><a href="/categories/{{ i.Topic}}/{{i.Problem}}">{{ i.Problem }}</a></td> 
-                    <td>Mark as done</td> 
+                    <td><a href="/categories/{{ i.Topic}}/{{i.Problem}}">{{ i.Problem }}</a></td>
+                    <td>Mark as done</td>
                 </tr>
                 {% endfor %}
             </table>
@@ -89,7 +106,7 @@
 
     </div>
 
-    
+
     <script>
         const dropdownButton = document.getElementById("dropdown-btn");
         const dropdown = document.getElementById("dropdown");
@@ -98,6 +115,7 @@
         })
     </script>
 </body>
+
 {% endblock %}
 
 </html>
