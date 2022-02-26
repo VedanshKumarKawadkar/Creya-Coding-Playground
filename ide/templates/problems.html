@@ -46,13 +46,20 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            overflow: hidden;
         }
 
         #heading {
             font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
             padding-left: 5rem;
             align-content: center;
+        }
+
+        th {
+            font-family: ;
+        }
+
+        td {
+            color: aliceblue;
         }
     </style>
 
@@ -63,7 +70,22 @@
         </div>
         {% endfor %}
 
-        
+        <div class="problem-set">
+            <table>
+                <tr>
+                    <th>#Q.</th>
+                    <th>Problem</th>
+                    <th>Status</th>
+                </tr>
+                {% for i in problems %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td><a href="/categories/{{ i.Topic}}/{{i.Problem}}">{{ i.Problem }}</a></td> 
+                    <td>Mark as done</td> 
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
 
     </div>
 

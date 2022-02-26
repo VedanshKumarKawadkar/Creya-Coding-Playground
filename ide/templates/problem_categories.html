@@ -24,85 +24,7 @@
         integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
         crossorigin="anonymous" />
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            background-color: #1E1F22;
-            font-family: 'Ubuntu', serif;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            overflow: hidden;
-        }
-
-        .container {
-            background-repeat: no-repeat;
-            background-position: center;
-            background-size: cover;
-            border-radius: 20px;
-            width: calc(25vw - 2rem);
-            height: 60vh;
-            position: relative;
-            box-shadow: 0 0 50px rgba(0, 0, 0, 0.315);
-        }
-
-        .container img {
-            align-items: center;
-            width: 100%;
-            height: 50vh;
-        }
-
-        .container .container__profile {
-            background-color: #e4f2fd;
-            display: flex;
-            align-items: center;
-            font-size: 1.5rem;
-            padding: 20px;
-            position: absolute;
-            right: 0;
-            left: 0;
-            bottom: 0;
-            border-radius: 0 0 20px 20px !important;
-
-        }
-
-        .container__profile__text {
-            align-content: center;
-            font-weight: bold;
-            font-family: 'IBM Plex Sans Thai Looped', sans-serif;
-        }
-
-        nav {
-            border-radius: 0 !important;
-            position: fixed !important;
-            background-color: #1E1F22;
-        }
-
-        .btn-info {
-            background-color: #379eb3;
-            border-color: #379eb3;
-        }
-
-        #dropdown {
-            top: 40px;
-            right: 0;
-        }
-
-
-        #logo {
-            height: 2.5rem;
-        }
-
-        a {
-            color: #1E1F22;
-
-        }
-    </style>
+    
     <title>Creya | Problems Categories</title>
 
 </head>
@@ -124,7 +46,6 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            overflow: hidden;
         }
 
         .container {
@@ -132,24 +53,25 @@
             background-position: center;
             background-size: cover;
             border-radius: 20px;
-            width: 16rem;
-            height: 20rem;
+            width: 13rem;
+            height: 17rem;
             position: relative;
             box-shadow: 0 0 50px rgba(0, 0, 0, 0.315);
         }
 
         .container img {
             align-items: center;
-            width: 100%;
-            height: 16rem;
+            padding-left: 15px;
+            
+            height: 13rem;
         }
 
         .container .container__profile {
             background-color: #e4f2fd;
             display: flex;
             align-items: center;
-            font-size: 1.5rem;
-            padding: 20px;
+            font-size: 1.1rem;
+            padding: 15px;
             position: absolute;
             right: 0;
             left: 0;
@@ -166,7 +88,6 @@
 
         nav {
             border-radius: 0 !important;
-            position: fixed !important;
             background-color: #1E1F22;
         }
 
@@ -189,24 +110,63 @@
             color: #1E1F22;
 
         }
+
+        tr, td {
+            padding: 20px;
+        }
     </style>
-    <div style="gap: 4rem;height: 100vh;" class="d-flex justify-content-center align-items-center">
+    <div style="gap: 4rem;" class="d-flex justify-content-center align-items-center">
+        <table class="problem-cats">
+            <tr>
+                {% for i in cat1 %}
+                <td>
+                    <a href="/categories/{{ i.cat }}">
+                        <div class="container m-0">
+                            <img src="{% static 'ide_editor/problems.png' %}">
+                            <div class="container__profile">             
+                                <div class="container__profile__text">
+                                    <p class="mb-0">{{ i.cat }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </td>
+                {% endfor %}
+            </tr>
+            <tr>
+                {% for i in cat2 %}
+                <td>
+                    <a href="/categories/{{ i.cat }}">
+                        <div class="container m-0">
+                            <img src="{% static 'ide_editor/problems.png' %}">
+                            <div class="container__profile">             
+                                <div class="container__profile__text">
+                                    <p class="mb-0">{{ i.cat }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </td>
+                {% endfor %}
+            </tr>
+            <tr>
+                {% for i in cat3 %}
+                <td>
+                    <a href="/categories/{{ i.cat }}">
+                        <div class="container m-0">
+                            <img src="{% static 'ide_editor/problems.png' %}">
+                            <div class="container__profile">             
+                                <div class="container__profile__text">
+                                    <p class="mb-0">{{ i.cat }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </td>
+                {% endfor %}
+            </tr>
+        </table>
         
-
-        {% for i in categories_data %}
-        <a href="/categories/{{ i.cat }}">
-            <div class="container m-0">
-                <img src="{% static 'ide_editor/problems.png' %}">
-                <div class="container__profile">
-                    
-                    <div class="container__profile__text">
-                        <p class="mb-0">{{ i.cat }}</p>
-                    </div>
-                </div>
-            </div>
-        </a>
-        {% endfor %}
-
     </div>
 
     <script>

@@ -2,12 +2,13 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse, JsonResponse
 from django.contrib import messages
 from json import dumps
-from pydantic import Json
 from ide_editor.models import CodeData
 import requests
 import time
 from pymongo import MongoClient
 import bcrypt
+import json
+from ide_editor.all_problems_set import ALL_PROBLEMS
 
 # Create your views here.
 client_string = "mongodb+srv://vk:1234@ide.gt9wy.mongodb.net/ide?retryWrites=true&w=majority&ssl=true&ssl_cert_reqs=CERT_NONE"
@@ -30,7 +31,7 @@ def editor(request):
     email = request.session["email"]
     print(username, email)
     data = [{"username":username, "email":email}]
-    context = {"data":data}
+    context = {"user_data":data}
     return render(request, "editor.html", context=context)
 
 
@@ -186,18 +187,60 @@ def problem_categories(request):
     username = request.session["username"]
     email = request.session["email"]
     print(username, email)
-    categories_data = [
+    category1 = [
         {"cat":"Arrays", "img":""},
         {"cat":"Matrices", "img":""}, 
         {"cat":"Searching & Sorting", "img":""}, 
-        {"cat":"Strings", "img":""}
+        {"cat":"Strings", "img":""},
+    ]
+
+    category2 = [
+        {"cat":"Greedy Algorithms", "img":""},
+        {"cat":"Linked Lists", "img":""},
+        {"cat":"Binary Trees", "img":""},
+        {"cat":"Graphs", "img":""},
+    ]
+
+    category3 = [
+        {"cat":"Dynamic Programming", "img":""},
+        {"cat":"Binary Search Trees", "img":""},
+        {"cat":"Backtracking", "img":""},
+        {"cat":"Stacks & Queues", "img":""},
+    ]
+
+    category4 = [
+        {"cat":"Heap", "img":""},
     ]
     user_data = [{"username":username, "email":email}]
-    context = {"user_data":user_data, "categories_data":categories_data}
+    context = {"user_data":user_data, "cat1":category1, "cat2":category2, "cat3":category3}
 
 
     return render(request, "problem_categories.html", context=context)
 
 
 def problem_set(request, category):
-    return HttpResponse(f"Working {category}")
+    username = request.session["username"]
+    email = request.session["email"]
+    user_data = [{"username":username, "email":email}]
+    print(f"***************{category}**************")
+    all_questions_data = ALL_PROBLEMS
+
+    required_set = []
+    for x in all_questions_data:
+        if x["Topic"] == category:
+            required_set.append(x)
+
+
+    problem_category = [{"category":category}]
+    context = {"user_data":user_data, "category":problem_category, "problems":required_set}
+    return render(request, "problems.html", context=context)
+
+def problems_editor(request, problem, category):
+    username = request.session["username"]
+    email = request.session["email"]
+    user_data = [{"username":username, "email":email}]
+    
+    problem_data = [{"category":category, "problem":problem}]
+    print(category, problem)
+    context = {"problem_data":problem_data, "user_data":user_data}
+    return render(request, "question_editor.html", context=context)
