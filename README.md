@@ -17,7 +17,7 @@
 <ul>
   <li><em>Large collection of coding questions</em> for various topics and difficulties</li>
   <li><em>Byte-sized cards</em> to learn on the go.</li>
-  <li>Online codint <em>IDE</em></li>
+  <li>Online coding <em>IDE</em></li>
 </ul>
 
 
