@@ -15,9 +15,9 @@
 <h2><u>Features</u></h2>
 <br />
 <ul>
-  <li><em>Thousands of coding challenges</em> for various topics and difficulties</li>
+  <li><em>Large collection of coding questions</em> for various topics and difficulties</li>
   <li><em>Byte-sized cards</em> to learn on the go.</li>
-  <li>Online code <em>playground</em></li>
+  <li>Online codint <em>IDE</em></li>
 </ul>
 
 
