@@ -241,8 +241,15 @@ def problems_editor(request, problem, category):
     username = request.session["username"]
     email = request.session["email"]
     user_data = [{"username":username, "email":email}]
-    
-    problem_data = [{"category":category, "problem":problem}]
+    all_questions_data = ALL_PROBLEMS
+
+    statement = ""
+    for x in all_questions_data:
+        if x["Problem"] == problem:
+            statement = x["Statement"]
+    problem_data = [{"category":category, "problem":problem, "statement":statement}]
     print(category, problem)
     context = {"problem_data":problem_data, "user_data":user_data}
+
+    print(statement)
     return render(request, "question_editor.html", context=context)
