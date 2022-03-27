@@ -25,7 +25,7 @@
         crossorigin="anonymous" />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=PT+Sans&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200&family=Montserrat&family=Nunito+Sans:wght@600&family=PT+Sans&family=Sansita+Swashed:wght@300&family=Syne+Mono&display=swap" rel="stylesheet">
     <title>Creya | Problems</title>
 
 </head>
@@ -35,70 +35,92 @@
 
 <body>
     <style>
-        * {
+        /* * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-        }
+        } */
 
         body {
             background-color: #1E1F22;
-            font-family: 'PT Sans', sans-serif !important;
+        }
+
+        .container {
+            max-width: 80vw;
+            text-align: center;
+            height: fit-content;
+            margin-bottom: 2rem;
+            border-width: 5px;
+            border-color: aliceblue;
+            border-style: solid;
+            border-radius: 10px;
+            background-image: linear-gradient(#0c043a, #081230, #0c043a);
+            padding-top: 1rem;
+        }
+        
+        h1{
+            border-width: 1px;
+            border-color: aliceblue;
+            font-family: 'Nunito Sans', sans-serif !important;
+        }
+
+        .heading {
+            color: aquamarine;
             
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }
-
-        #heading {
-            font-family: 'PT Sans', sans-serif;
-            padding-left: 5rem;
-            align-content: center;
-        }
-
-        th, td {
-            padding: 15px;
         }
 
         th {
-            color: #379eb3;
-            font-size: 2rem;
-            font-family: 'PT Sans', sans-serif !important;
+            color: rgb(81, 212, 252);
+            border-color: aliceblue;
+            border-width: 1px;
+            /* border-radius: 5px; */
+
         }
 
-        td {
-            color: aliceblue;
-            font-family: 'PT Sans', sans-serif !important;
+        td, a {
+            color: rgb(86, 219, 236);
+            text-align: left;
+            text-decoration: none;
+            padding-left: 8px;
+            padding-top: 4px;
+            padding-bottom: 4px;
+            padding-right: 8px;
+        }
+    
+        table, td, tr, th{
+            border-color: aliceblue;
+            border-width: 1px;
+            border-radius: 5px;
+            border-style: solid;
         }
 
-        table{
-            font-family: 'PT Sans', sans-serif !important;
+        .problem-table{
+            margin-top: 2rem;
+            margin-left: 2vw;
+            margin-right: 2vw;
+            padding-bottom: 2rem;
         }
-        .container-fluid{
-            align-content: center;
-        }
-
     </style>
 
-    <div class="container-fluid">
-        {% for i in category %}
-        <div id="heading">
+    <div class="container">
+        <div class="heading">
+            {% for i in category %}
             <h1>Problems | {{ i.category}}</h1>
+            {% endfor %}
         </div>
-        {% endfor %}
 
-        <div class="problem-set">
+        <div class="problem-table">
             <table id="problem-table">
                 <tr>
                     <th>#</th>
-                    <th>Problem</th>
-                    <th>Status</th>
+                    <th>PROBLEMS</th>
+                    <th>STATUS</th>
                 </tr>
                 {% for i in problems %}
                 <tr>
                     <td>{{ forloop.counter }}</td>
                     <td><a href="/categories/{{ i.Topic}}/{{i.Problem}}">{{ i.Problem }}</a></td>
-                    <td>Mark as done</td>
+                    <td>{{ i.Status }}</td>
                 </tr>
                 {% endfor %}
             </table>

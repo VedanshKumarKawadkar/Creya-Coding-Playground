@@ -169,7 +169,7 @@ def signup(request):
             }
             user_details_coll.insert_one(user_details)
             msg = "New User Created."
-            message = {"message":msg}
+            message = {"msg":msg}
             return JsonResponse(message)
 
 
@@ -226,10 +226,12 @@ def problem_set(request, category):
     all_questions_data = ALL_PROBLEMS
 
     required_set = []
+    status = []
     for x in all_questions_data:
         if x["Topic"] == category:
             required_set.append(x)
-
+    
+    print(required_set)
 
     problem_category = [{"category":category}]
     context = {"user_data":user_data, "category":problem_category, "problems":required_set}
