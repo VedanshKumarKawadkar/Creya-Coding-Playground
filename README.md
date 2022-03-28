@@ -94,4 +94,8 @@ https://user-images.githubusercontent.com/67778396/160447647-1c3b2aac-583d-4e12-
 
 <h2><u>To-do List</u></h2>
 <br />
-<p><em>Coming Soon</em></p>
+<ul>
+  <li>User notes for each problem.</li>
+  <li>Saving code in user's local storage</li>
+  <li>Revision cards</li>
+</ul>
