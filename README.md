@@ -6,7 +6,7 @@
 
 <h2><u>What it is</u></h2>
 <br />
-<h5><strong>Creya IDE Playground</strong> is a project to help developers like you learn and practice at one place.</h5>
+<h5><strong>Creya IDE Playground</strong> is a project undertaken as an attempt to improve my web development skills.</h5>
 
 <br />
 <hr />
@@ -28,6 +28,10 @@
 
 <h2><u>Previews</u></h2>
 <br />
+<p align="center">
+  <img src="https://github.com/VedanshKumarKawadkar/Creya-Coding-Playground/blob/master/ide/media/creya.png?raw=true" height=200>
+</p>
+
 <p><em>Coming soon</em></p>
 
 <br />
