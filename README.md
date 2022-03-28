@@ -59,6 +59,7 @@
 
 <strong>Problem Statement</strong>
 <h5>The user can chose on any problem and they would be directed to a page with the problem details and Creya IDE. The user can write the code from scratch and test it by providing suitable input.</h5>
+
 https://user-images.githubusercontent.com/67778396/160447647-1c3b2aac-583d-4e12-81bf-4289fe7b035c.mp4
 
 
