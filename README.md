@@ -31,8 +31,23 @@
 <p align="center">
   <img src="https://github.com/VedanshKumarKawadkar/Creya-Coding-Playground/blob/master/ide/media/signup%20page.png?raw=true" height=400>
 </p>
+<p align="center">
+  <img src="https://github.com/VedanshKumarKawadkar/Creya-Coding-Playground/blob/master/ide/media/login%20page.png?raw=true" height=400>
+</p>
+<p align="center">
+  <img src="https://github.com/VedanshKumarKawadkar/Creya-Coding-Playground/blob/master/ide/media/firstpage.png?raw=true" height=400>
+</p>
+<p align="center">
+  <img src="https://github.com/VedanshKumarKawadkar/Creya-Coding-Playground/blob/master/ide/media/idepage.png?raw=true" height=400>
+</p>
+<p align="center">
+  <img src="https://github.com/VedanshKumarKawadkar/Creya-Coding-Playground/blob/master/ide/media/categorypage.png?raw=true" height=400>
+</p>
+<p align="center">
+  <img src="https://github.com/VedanshKumarKawadkar/Creya-Coding-Playground/blob/master/ide/media/problems.png?raw=true" height=400>
+</p>
+https://github.com/VedanshKumarKawadkar/Creya-Coding-Playground/blob/master/ide/media/Problem.mp4
 
-<p><em>Coming soon</em></p>
 
 <br />
 <hr />
