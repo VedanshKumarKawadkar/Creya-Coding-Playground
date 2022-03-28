@@ -1,7 +1,7 @@
 <p align="center">
   <img src="https://github.com/VedanshKumarKawadkar/Creya-Coding-Playground/blob/master/ide/media/creya.png?raw=true" height=200>
 </p>
-<h1 align="center">Creya IDE Playground</h1>
+<h1 align="center">Creya Coding Playground</h1>
 <br />
 
 <h2><u>About Creya</u></h2>
