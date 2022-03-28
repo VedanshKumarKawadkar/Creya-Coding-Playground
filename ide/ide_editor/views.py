@@ -9,6 +9,7 @@ from pymongo import MongoClient
 import bcrypt
 import json
 from ide_editor.all_problems_set import ALL_PROBLEMS
+import re
 
 # Create your views here.
 client_string = "mongodb+srv://vk:1234@ide.gt9wy.mongodb.net/ide?retryWrites=true&w=majority&ssl=true&ssl_cert_reqs=CERT_NONE"
@@ -141,35 +142,45 @@ def signup(request):
         re_pwd = request.POST.get('signup_password_confirm')
         print(username, pwd, email, re_pwd)
 
-        client = MongoClient(host=client_string, connect=False)
-        ideDB = client.ide
-        user_details_coll = ideDB.user_details
+        reg = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!#%*?&]{8,18}$"
+        match_re = re.compile(reg)
+        res = re.search(match_re, pwd)
 
-        check_email = user_details_coll.find_one({"email":email})
-        print(check_email)
-        check_username = user_details_coll.find_one({"username":username})
-        print(check_username)
+        if res: 
+            client = MongoClient(host=client_string, connect=False)
+            ideDB = client.ide
+            user_details_coll = ideDB.user_details
 
-        if(check_email!=None):
-            msg = "E-mail already present."
-            message = {"message":msg}
-            return JsonResponse(message)
+            check_email = user_details_coll.find_one({"email":email})
+            print(check_email)
+            check_username = user_details_coll.find_one({"username":username})
+            print(check_username)
+
+            if(check_email!=None):
+                msg = "E-mail already present."
+                message = {"message":msg}
+                return JsonResponse(message)
+            
+            elif check_email==None and check_username!=None:
+                msg = "Username already exists."
+                message = {"message":msg}
+                return JsonResponse(message)
+
+            elif check_email == None and check_username==None:
+                user_details = {
+                    "username":username,
+                    "email":email,
+                    "password":pwd,
+                    "hashed_pwd": bcrypt.hashpw(pwd.encode('utf-8'), salt=bcrypt.gensalt(rounds=8))
+                }
+                user_details_coll.insert_one(user_details)
+                msg = "New User Created."
+                message = {"msg":msg}
+                return JsonResponse(message)
         
-        elif check_email==None and check_username!=None:
-            msg = "Username already exists."
+        else:
+            msg = "Please follow the password guidelines."
             message = {"message":msg}
-            return JsonResponse(message)
-
-        elif check_email == None and check_username==None:
-            user_details = {
-                "username":username,
-                "email":email,
-                "password":pwd,
-                "hashed_pwd": bcrypt.hashpw(pwd.encode('utf-8'), salt=bcrypt.gensalt(rounds=8))
-            }
-            user_details_coll.insert_one(user_details)
-            msg = "New User Created."
-            message = {"msg":msg}
             return JsonResponse(message)
 
 
@@ -244,12 +255,17 @@ def problems_editor(request, problem, category):
     all_questions_data = ALL_PROBLEMS
 
     statement = ""
+    url = ""
     for x in all_questions_data:
         if x["Problem"] == problem:
             statement = x["Statement"]
-    problem_data = [{"category":category, "problem":problem, "statement":statement}]
+            url = x["URL"]
+    problem_data = [{"category":category, "problem":problem, "statement":statement, "url":url}]
     print(category, problem)
     context = {"problem_data":problem_data, "user_data":user_data}
 
     print(statement)
     return render(request, "question_editor.html", context=context)
+
+def change_status(request):
+    ...
