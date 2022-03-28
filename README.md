@@ -28,25 +28,37 @@
 
 <h2><u>Previews</u></h2>
 <br />
+<strong>The Signup Page</strong>
 <p align="center">
   <img src="https://github.com/VedanshKumarKawadkar/Creya-Coding-Playground/blob/master/ide/media/signup%20page.png?raw=true" height=400>
 </p>
+<strong>The Login Page</strong>
 <p align="center">
   <img src="https://github.com/VedanshKumarKawadkar/Creya-Coding-Playground/blob/master/ide/media/login%20page.png?raw=true" height=400>
 </p>
+<strong>Home Page</strong>
+<h5>After the user logs in, this page is visible.</h5>
 <p align="center">
   <img src="https://github.com/VedanshKumarKawadkar/Creya-Coding-Playground/blob/master/ide/media/firstpage.png?raw=true" height=400>
 </p>
+<strong>IDE Page</strong>
+<h5>On clicking the "Creya IDE" card, the user is redirected to the ide page.</h5>
 <p align="center">
   <img src="https://github.com/VedanshKumarKawadkar/Creya-Coding-Playground/blob/master/ide/media/idepage.png?raw=true" height=400>
 </p>
+<strong>Problems Categories</strong>
+<h5>On clicking the "Problems" card, the user is directed to a page with different cards for each problem category.</h5>
 <p align="center">
   <img src="https://github.com/VedanshKumarKawadkar/Creya-Coding-Playground/blob/master/ide/media/categorypage.png?raw=true" height=400>
 </p>
+<strong>Problems</strong>
+<h5>The user can click on any card and the problems related to that category would appear</h5>
 <p align="center">
   <img src="https://github.com/VedanshKumarKawadkar/Creya-Coding-Playground/blob/master/ide/media/problems.png?raw=true" height=400>
 </p>
 
+<strong>Problem Statement</strong>
+<h5>The user can chose on any problem and they would be directed to a page with the problem details and Creya IDE. The user can write the code from scratch and test it by providing suitable input.</h5>
 https://user-images.githubusercontent.com/67778396/160447647-1c3b2aac-583d-4e12-81bf-4289fe7b035c.mp4
 
 
