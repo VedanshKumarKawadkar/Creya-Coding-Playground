@@ -29,7 +29,7 @@
 <h2><u>Previews</u></h2>
 <br />
 <p align="center">
-  <img src="https://github.com/VedanshKumarKawadkar/Creya-Coding-Playground/blob/master/ide/media/signup%20page.png?raw=true" height=200>
+  <img src="https://github.com/VedanshKumarKawadkar/Creya-Coding-Playground/blob/master/ide/media/signup%20page.png?raw=true" height=400>
 </p>
 
 <p><em>Coming soon</em></p>
