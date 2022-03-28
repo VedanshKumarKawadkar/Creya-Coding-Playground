@@ -46,7 +46,9 @@
 <p align="center">
   <img src="https://github.com/VedanshKumarKawadkar/Creya-Coding-Playground/blob/master/ide/media/problems.png?raw=true" height=400>
 </p>
-https://github.com/VedanshKumarKawadkar/Creya-Coding-Playground/blob/master/ide/media/Problem.mp4
+<p align="center">
+  <img src="https://github.com/VedanshKumarKawadkar/Creya-Coding-Playground/blob/master/ide/media/Problem.mp4" height=400>
+</p>
 
 
 <br />
