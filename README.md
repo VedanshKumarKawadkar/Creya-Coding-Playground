@@ -4,7 +4,7 @@
 <h1 align="center">Creya IDE Playground</h1>
 <br />
 
-<h2><u>What it is</u></h2>
+<h2><u>About Creya</u></h2>
 <br />
 <h5><strong>Creya IDE Playground</strong> is a project undertaken as an attempt to improve my web development skills.</h5>
 
@@ -15,7 +15,7 @@
 <h2><u>Features</u></h2>
 <br />
 <ul>
-  <li><em>Large collection of coding questions</em> for various topics and difficulties</li>
+  <li><em>Large collection of coding questions</em> for various topics. Thanks to @loveBabbar for the question set.</li>
   <li><em>Byte-sized cards</em> to learn on the go.</li>
   <li>Online coding <em>IDE</em></li>
 </ul>
@@ -73,15 +73,16 @@ https://user-images.githubusercontent.com/67778396/160447647-1c3b2aac-583d-4e12-
   <strong>Backend</strong>
   <ul>
     <li>Python</li>
-    <li>Django</li>
+    <li>Django Web Framerwork</li>
     <li>MongoDB</li>
   </ul>
   <strong>Frontend</strong>
   <ul>
-    <li>HTML5 <em>(obviously)</em></li>
+    <li>HTML5</li>
     <li>CSS3</li>
     <li>Bootstrap</li>
     <li>jQuery</li>
+    <li>JavaScript</li>
   </ul>
 </ul>
 
