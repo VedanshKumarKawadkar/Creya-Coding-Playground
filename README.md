@@ -42,10 +42,12 @@
   <img src="https://github.com/VedanshKumarKawadkar/Creya-Coding-Playground/blob/master/ide/media/firstpage.png?raw=true" height=400>
 </p>
 <strong>IDE Page</strong>
-<h5>On clicking the "Creya IDE" card, the user is redirected to the ide page.</h5>
-<p align="center">
-  <img src="https://github.com/VedanshKumarKawadkar/Creya-Coding-Playground/blob/master/ide/media/idepage.png?raw=true" height=400>
-</p>
+<h5>On clicking the "Creya IDE" card, the user is redirected to the ide page. The user can write code and generate input and output.</h5>
+
+
+https://user-images.githubusercontent.com/67778396/160452906-30b4bbcf-ee98-4110-a07f-e8961773f4ee.mp4
+
+
 <strong>Problems Categories</strong>
 <h5>On clicking the "Problems" card, the user is directed to a page with different cards for each problem category.</h5>
 <p align="center">
